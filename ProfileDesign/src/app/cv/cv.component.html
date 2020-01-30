@@ -1,0 +1,110 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-mg-4 col-sm-4 col-12">
+            <img id="image" [src]="imageName" onchange="readURL(this);" class="rounded-circle" alt="Profile" width="150" height="150">
+        </div>
+        <div class="col-lg-4 col-mg-4 col-sm-4 col-12">
+            <h3> {{data.get('firstName').value}} {{data.get('lastName').value}} </h3>
+            <hr id="horizontal">
+            <h4>{{data.get('designation').value}}</h4>
+        </div>
+        <div class="col-lg-4 col-mg-4 col-sm-4 col-12" id="left">
+            <p style="margin-left: 15px;">{{data.get('email').value}}</p>
+            <p style="margin-left: 15px;">{{data.get('mobile').value}}</p>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-12">
+            <h3 style="background: powderblue;">EXPERIENCE</h3>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>Intern Software Engineer</h4>
+            <h6>Present</h6>   
+        </div>
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>Mindfire Solutions</h4>
+             
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>Development of android app for air quality.</h4>
+            <h6>DEC 2018-JAN 2019</h6>   
+        </div>
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>City Probe(NIT Durgapur)</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3 style="background: powderblue;">EDUCATION</h3>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>MCA</h4>
+            <h6>{{data.get('pgYear').value}}</h6>   
+        </div>
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>{{data.get('pgBoard').value}}</h4>
+            <h6>Passed with {{data.get('pgPercentage').value}} % </h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>BCA</h4>
+            <h6>{{data.get('bscYear').value}}</h6>   
+        </div>
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>{{data.get('bscBoard').value}}</h4>
+            <h6>Passed with {{data.get('bscPercentage').value}} % </h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>Intermediate</h4>
+            <h6>{{data.get('hscYear').value}}</h6>   
+        </div>
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>{{data.get('hscBoard').value}}</h4>
+            <h6>Passed with {{data.get('hscPercentage').value}} % </h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>Matriculation</h4>
+            <h6>{{data.get('sscYear').value}}</h6>   
+        </div>
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h4>{{data.get('sscBoard').value}}</h4>
+            <h6>Passed with {{data.get('sscPercentage').value}} % </h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h3 style="background: powderblue;">SKILLS</h3>
+        </div>
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <h3 style="background: powderblue;">LANGUAES</h3>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <ul *ngFor="let skill of Skills">
+                <li>{{skill}}</li>
+              </ul> 
+        </div>
+        <div class="col-lg-6 col-mg-6 col-sm-6 col-12">
+            <ul>
+                <li id="l1">English</li>
+                <li id="l2">Hindi</li>
+            </ul>    
+        </div>
+    </div><br>
+    
+    
+</div>    
+

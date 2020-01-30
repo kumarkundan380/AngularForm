@@ -1,0 +1,21 @@
+#name{
+    margin-top: 20px;
+    letter-spacing: 0.3em;
+    font-weight: bold;
+}
+#left{
+    letter-spacing: 0.1em;
+
+}
+#horizontal{
+    border: 2px solid powderblue;
+    margin-right: 20px;
+  }
+#degination{
+    letter-spacing: 0.2em;
+    margin-top: 20px;
+}
+#nothing
+{
+    margin-right: 10px;
+}

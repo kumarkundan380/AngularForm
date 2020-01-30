@@ -1,0 +1,267 @@
+
+<div class="container"><br>
+    <h1 class="text-center bg-dark text-white">My Profile</h1><br>
+    <form class="form-control-lg-4" [formGroup]="profileForm" (change)="update()">
+        <div class="row">
+            <div class="col-lg-4 col-mg-4 col-sm-4 col-12">
+                <img [src]='imgURL' id ="profilepic" class="img-fluid">
+            </div>
+            <div class="col-lg-4 col-mg-4 col-sm-4 col-12">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input [class.is-invalid]="firstName.invalid 
+                    && firstName.touched" formControlName="firstName" type="text" class="form-control" >
+                    <div *ngIf="firstName.invalid && firstName.touched">
+                      <small *ngIf="firstName.errors?.required" class="text-danger">First Name is required</small>
+                      <small *ngIf="firstName.errors?.minlength" class="text-danger">First Name must be at least 3 characters</small>
+                    </div>
+                </div>
+            </div>    
+            <div class="col-lg-4 col-mg-4 col-sm-4 col-12">
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input formControlName="lastName" type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class ="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <input #file type="file" (change)="readURL(file.files);" name='image1' accept=".jpg" id="image1" class="btn ">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input [class.is-invalid]="profileForm.get('email').invalid 
+                    && profileForm.get('email').touched" formControlName="email" type="email" class="form-control" >
+                    <div *ngIf="email.invalid && email.touched">
+                      <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
+                      <small *ngIf="email.errors?.email" class="text-danger">Plz fill valid email</small>
+                    </div> 
+                </div>
+            </div>   
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <div class="form-group">
+                    <label>Designation</label>
+                    <input [class.is-invalid]="profileForm.get('designation').invalid && profileForm.get('designation').touched" formControlName="designation" type="text" class="form-control" >
+                    <small [class.d-none]="profileForm.get('designation').valid || profileForm.get('designation').untouched" class="text-danger">Designation is required</small> 
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <div class="form-group">
+                    <label>Country</label>
+                    <select name="country" class="form-control">
+                        <option selected>Country</option>
+                        <option *ngFor="let country of countries"> {{country}} </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <div class="form-group">
+                    <label>Mobile Number</label>
+                    <input [class.is-invalid]="mobile.invalid && mobile.touched" formControlName="mobile" type="text" class="form-control" >
+                    <div *ngIf="mobile.invalid && mobile.touched">
+                        <small *ngIf="mobile.errors?.required" class="text-danger"> Mobile Number is required</small>
+                        <small *ngIf="mobile.errors?.minlength" class="text-danger">Plz Provide Valid Mobile Number</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input [class.is-invalid]="profileForm.get('dob').invalid 
+                    && profileForm.get('dob').touched" formControlName="dob" type="date" class="form-control" >
+                    <small [class.d-none]="profileForm.get('dob').valid || 
+                    profileForm.get('dob').untouched"class="text-danger">D.O.B is required</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <div class="form-group">
+                    <label>Your Skills</label>
+                    <input [class.is-invalid]="profileForm.get('skill').invalid 
+                    && profileForm.get('skill').touched" formControlName="skill" type="text" class="form-control" >
+                    <small [class.d-none]="profileForm.get('skill').valid || 
+                    profileForm.get('skill').untouched"class="text-danger">Skill is required</small>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <div class="form-group">
+                    <label>Hobbies</label>
+                    <input [class.is-invalid]="profileForm.get('hobby').invalid 
+                    && profileForm.get('hobby').touched" formControlName="hobby" type="text" class="form-control" >
+                    <small [class.d-none]="profileForm.get('hobby').valid || 
+                    profileForm.get('hobby').untouched"class="text-danger">Hobby is required</small>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-12">
+                <div class="form-group">
+                    <label style="margin-right: 20px;">Gender</label><br>
+                    <!-- Material inline 1 -->
+                    <div class="form-check form-check-inline">
+                        <input type="radio"class="form-check-input" name="gender" checked>
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+  
+                    <!-- Material inline 2 -->
+                    <div class="form-check form-check-inline">
+                        <input type="radio"class="form-check-input" name="gender">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+  
+                    <!-- Material inline 3 -->
+                    <div class="form-check form-check-inline">
+                        <input type="radio"class="form-check-input" name="gender">
+                        <label class="form-check-label" for="others">Others</label>
+                    </div>   
+                </div> 
+            </div>
+        </div>
+     <!----   <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label>Address</label>
+                    <input [class.is-invalid]="address.invalid && address.touched" formControlName="address" type="text" class="form-control" >
+                    <small [class.d-none]="profileForm.get('address').valid || profileForm.get('address').untouched" class="text-danger">Address is required</small>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label>Language</label>
+                    <input [class.is-invalid]="language.invalid && language.touched" formControlName="language" type="text" class="form-control" >
+                    <small [class.d-none]="profileForm.get('language').valid || profileForm.get('language').untouched"class="text-danger">This Field cannot be empty</small>
+                </div>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-12">
+                <h3 class="text text-dark">Educational Qualifications</h3>
+                <hr id="horizontal">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                <h4>Qualification</h4>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                <h4>Board/ University</h4>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                <h4>Percentage</h4>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                <h4>Year</h4>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                <h5>S.S.C</h5>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('sscBoard').invalid 
+              && profileForm.get('sscBoard').touched" formControlName="sscBoard" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('sscBoard').valid || 
+              profileForm.get('sscBoard').untouched"class="text-danger">This Field is required</small>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('sscPercentage').invalid 
+              && profileForm.get('sscPercentage').touched" formControlName="sscPercentage" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('sscPercentage').valid || 
+              profileForm.get('sscPercentage').untouched"class="text-danger">This Field is required</small>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('sscYear').invalid 
+              && profileForm.get('sscYear').touched" formControlName="sscYear" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('sscYear').valid || 
+              profileForm.get('sscYear').untouched"class="text-danger">This Field is required</small>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                <h5>H.S.C(Science Stream)</h5>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('hscBoard').invalid 
+              && profileForm.get('hscBoard').touched" formControlName="hscBoard" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('hscBoard').valid || 
+              profileForm.get('hscBoard').untouched"class="text-danger">This Field is required</small>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('hscPercentage').invalid 
+              && profileForm.get('hscPercentage').touched" formControlName="hscPercentage" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('hscPercentage').valid || 
+              profileForm.get('hscPercentage').untouched"class="text-danger">This Field is required</small>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('hscYear').invalid 
+              && profileForm.get('hscYear').touched" formControlName="hscYear" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('hscYear').valid || 
+              profileForm.get('hscYear').untouched"class="text-danger">This Field is required</small>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                <h5>B.Sc. (Hons)-Computer Science</h5>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('bscBoard').invalid 
+              && profileForm.get('bscBoard').touched" formControlName="bscBoard" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('bscBoard').valid || 
+              profileForm.get('bscBoard').untouched"class="text-danger">This Field is required</small>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('bscPercentage').invalid 
+              && profileForm.get('bscPercentage').touched" formControlName="bscPercentage" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('bscPercentage').valid || 
+              profileForm.get('bscPercentage').untouched"class="text-danger">This Field is required</small>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('bscYear').invalid 
+              && profileForm.get('bscYear').touched" formControlName="bscYear" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('bscYear').valid || 
+              profileForm.get('bscYear').untouched"class="text-danger">This Field is required</small>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                <h5>P.G-(Computer Science)</h5>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('pgBoard').invalid 
+              && profileForm.get('pgBoard').touched" formControlName="pgBoard" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('pgBoard').valid || 
+              profileForm.get('pgBoard').untouched"class="text-danger">This Field is required</small>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('pgPercentage').invalid 
+              && profileForm.get('pgPercentage').touched" formControlName="pgPercentage" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('pgPercentage').valid || 
+              profileForm.get('pgPercentage').untouched"class="text-danger">This Field is required</small>          </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+              <input [class.is-invalid]="profileForm.get('pgYear').invalid 
+              && profileForm.get('pgYear').touched" formControlName="pgYear" type="text" class="form-control" >
+              <small [class.d-none]="profileForm.get('pgYear').valid || 
+              profileForm.get('pgYear').untouched"class="text-danger">This Field is required</small>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group purple-border">
+                    <h5>Bio</h5>
+                    <textarea [class.d-none]="profileForm.get('bio').invalid 
+                    && profileForm.get('bio').touched" formControlName="bio" class="form-control" rows="3"></textarea>
+                    <small [class.d-none]="profileForm.get('bio').valid || 
+                    profileForm.get('bio').untouched"class="text-danger">This Field is required</small>
+                  </div> 
+            </div>
+        </div>
+        <input type="reset" name="" class="btn" value="Reset">
+        <input routerLink="/cv" type="button" name="Preview" class="btn" value="Submit">
+    </form>
+   
+    </div>
+
+  
+  
